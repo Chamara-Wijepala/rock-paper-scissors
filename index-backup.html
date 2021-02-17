@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        function game() {
+            let counter = 0;
+
+            let computerScore = 0;
+
+            let playerScore = 0;
+
+            while (counter < 5) {
+                counter++;
+
+                function computerPlay() {
+                    const choices = ['rock', 'paper', 'scissors'];
+
+                    let computerChoice = Math.floor(Math.random() * choices.length);
+                    return choices[computerChoice];
+                };
+
+                let computerSelection = computerPlay();
+
+                let playerSelection = prompt("Rock, Paper or Scissors?: ").toLowerCase();
+
+                function playRound(computerSelection, playerSelection) {
+                    if (computerSelection === playerSelection) {
+                        console.log("It's a tie.");
+                    }  else if (computerSelection == "rock" && playerSelection == "paper") {
+                        console.log("You won! Paper beats rock.");
+                        return playerScore++;
+                    }  else if (computerSelection == "rock" && playerSelection == "scissors") {
+                        console.log("You lose! Rock beats scissors.");
+                        return computerScore++;
+                    }  else if (computerSelection == "paper" && playerSelection == "rock") {
+                        console.log("You lose! Paper beats rock.");
+                        return computerScore++;
+                    }  else if (computerSelection == "paper" && playerSelection == "scissors") {
+                        console.log("You win! Scissors beat paper.");
+                        return playerScore++;
+                    }  else if (computerSelection == "scissors" && playerSelection == "rock") {
+                        console.log("You win! Rock beats scissors.");
+                        return playerScore++;
+                    }  else if (computerSelection == "scissors" && playerSelection == "paper") {
+                        console.log("You lose! Scissors beat paper.");
+                        return computerScore++;
+                    }
+                };
+
+                playRound(computerSelection, playerSelection);
+            };
+
+            console.log("Your score: ", playerScore);
+            console.log("Computer score: ", computerScore);
+
+            if (playerScore > computerScore) {
+                console.log("You win the game!");
+            }  else if (playerScore < computerScore) {
+                console.log("You lost the game.");
+            }  else console.log("It's a tie.");
+        };
+
+        game();
+    </script>
+</html>
